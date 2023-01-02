@@ -19,13 +19,3 @@ print(sentences)
 output.write('\"text\",' + '\n')
 for i in sentences:
     output.write('\"' + i + '\",' + '\n')
-# texts = train_data.values[:,0]
-# for i in texts:
-#     print(i)
-#     vectors = word2vec.Word2Vec(i)
-# vectors = Word2Vec(texts)
-
-
-# print(vectors)
-# for i in len(train_data):
-#     words = train_data.values[i,0]
