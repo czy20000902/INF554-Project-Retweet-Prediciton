@@ -58,7 +58,7 @@ def test():
 
     with open("result.csv", "w") as result:
         result.write('TweetID,retweets_count\n')
-        for i in range(117990):
+        for i in range(len(data_set)):
             result.write(str(TweetID[i]))
             result.write(',')
             result.write(str(predictions[i]))
