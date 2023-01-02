@@ -11,8 +11,6 @@ from nltk.corpus import stopwords
 
 train_data = pd.read_csv("train.csv")
 output = open('sentences.csv', mode='w', encoding='UTF-8')
-# stopwords = pd.read_csv("stopwords.txt")
-# stopwords = stopwords[0].tolist()
 
 sentences = train_data.values[:, 0]
 print(sentences)
