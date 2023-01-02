@@ -3,9 +3,8 @@ from sentence_transformers import SentenceTransformer
 import pandas as pd
 import numpy as np
 
-# 保存预训练模型的文件夹
 
-def train_embedding():
+def embedding():
     model_path = "./all-mpnet-base-v2"
 
     if not exists(model_path):
@@ -14,6 +13,7 @@ def train_embedding():
         model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2', device='cuda')
         # Save model
         model.save(model_path)
+        
     # Load backbone
     model = SentenceTransformer(model_path, device='cuda')
     # data = pd.read_csv('train.csv')
@@ -28,28 +28,6 @@ def train_embedding():
     np.save('sentence_embeddings.npy', embeddings)
 
 
-def test_embedding():
-    model_path = "./all-mpnet-base-v2"
-
-    if not exists(model_path):
-        print('downloading model')
-        # Load model
-        model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2', device='cuda')
-        # Save model
-        model.save(model_path)
-    # Load backbone
-    model = SentenceTransformer(model_path, device='cuda')
-    # data = pd.read_csv('train.csv')
-    data = open('evaluation_sentences.csv', 'r', encoding='UTF-8')
-    print(data.readline())
-    sentences = []
-    for line in data.readlines():
-        sentences.append(line[1:-3])
-    print(len(sentences))
-    embeddings = model.encode(sentences, device='cuda', show_progress_bar=True)
-
-    np.save('evaluation_embeddings.npy', embeddings)
 
 if __name__ == '__main__':
-    train_embedding()
-    # test_embedding()
+    embedding()
